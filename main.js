@@ -210,7 +210,7 @@ function getData(req, res, version) {
 
     const queryresult = istcg ? genshindbtcg[command](params.query, opts) : genshindb[command](params.query, opts);
 	if (command === 'characters' && queryresult.result?.name === 'Vesna') {
-	queryresult.result.images.custom_icon = 'https://raw.githubusercontent.com/eRsun08/genshin-db/refs/heads/main/src/data/image/custom_image/custom_icon_vesna.webp' ||;
+	queryresult.result.images.custom_icon = 'https://raw.githubusercontent.com/eRsun08/genshin-db/refs/heads/main/src/data/image/custom_image/custom_icon_vesna.webp' || {};
 	queryresult.result.images = queryresult.result.images;
 }
     queryresult.options.dumpResult = userDumpResult;
