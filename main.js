@@ -209,10 +209,19 @@ function getData(req, res, version) {
     opts.dumpResult = true;
 
     const queryresult = istcg ? genshindbtcg[command](params.query, opts) : genshindb[command](params.query, opts);
-	if (command === 'characters' && queryresult.result?.name === 'Vesna') {
-	queryresult.result.images.custom_icon = 'https://raw.githubusercontent.com/eRsun08/genshin-db/refs/heads/main/src/data/image/custom_image/custom_icon_vesna.webp' || {};
-	queryresult.result.images = queryresult.result.images;
-}
+	if (command === 'characters' && queryresult.result?.name === 'Vesna')
+	{
+		queryresult.result.images.custom_icon = 'https://raw.githubusercontent.com/eRsun08/genshin-db/refs/heads/main/src/data/image/custom_image/custom_icon_vesna.webp' || {};
+		queryresult.result.images = queryresult.result.images;
+	} else if (command === 'weapons' && queryresult.result?.name === 'Beyond the Chrysalis')
+	{
+		queryresult.result.images.custom_icon = 'https://raw.githubusercontent.com/eRsun08/genshin-db/refs/heads/main/src/data/image/custom_image/custom_icon_beyond_the_chrysalis.webp' || {};
+		queryresult.result.images = queryresult.result.images;
+	} else if (command === 'weapons' && queryresult.result?.name === 'Hymn of the Maelstrom')
+	{
+		queryresult.result.images.custom_icon = 'https://raw.githubusercontent.com/eRsun08/genshin-db/f1f268b8e0ae7e66d2caa49d64c93e894897a2b0/src/data/image/custom_image/custom_icon_hymn_of_the-maelstrom.webp' || {};
+		queryresult.result.images = queryresult.result.images;
+	}
     queryresult.options.dumpResult = userDumpResult;
     log("success "+queryresult.match, { query: queryresult.query, folder: queryresult.folder, match: queryresult.match, options: queryresult.options, filename: queryresult.filename });
     console.log(req.headers.referer);
